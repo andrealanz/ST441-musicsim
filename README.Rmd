@@ -10,22 +10,13 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 ```
-# project
+# musicsim
 
-The goal of project is to my project.
+### Author: Andrea Lanz
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+A project that focuses on the quantitative representation of music and how it can be simulated. This project will explore the relationship between the numerical information behind sound and what is considered music. Using several related sources, this project will mainly focus on frequency of sound and analyzing the patterns of frequency that can be seen in music.
 
-```{r cars}
-summary(cars)
-```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date.
 
-You can also embed plots, for example:
 
-```{r pressure, echo = FALSE}
-plot(pressure)
-```
 
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub!
