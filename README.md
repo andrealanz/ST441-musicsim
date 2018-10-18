@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# musicsim
+# Exploring the Simulation of Music
 
 ### Author: Andrea Lanz
 
