@@ -51,3 +51,38 @@ Sources for related R packages:
 - https://cran.r-project.org/web/packages/seewave/vignettes/seewave_IO.pdf (seewave, tuneR, and audio)
 - https://cran.r-project.org/web/packages/warbleR/index.html (warbleR)
 
+```{r include=FALSE}
+library(tuneR)
+library(seewave)
+library(audio)
+```
+
+TuneR:
+
+Returns a wave object:
+```{r}
+vivaldi <- readMP3("Music/vivaldi.mp3")
+plot(vivaldi)
+```
+```{r}
+#play(vivaldi,wmplayer.exe) #note this does not work on the cloud
+```
+
+Audio:
+
+```{r, error=TRUE}
+audio::play(vivaldi) #this does not work on the cloud either
+```
+
+SeeWave:
+
+needs the following packages:
+```{r}
+library(fftw)
+library(rgl)
+library(rpanel)
+library(tuneR)
+```
+
+
+
