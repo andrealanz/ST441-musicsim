@@ -61,7 +61,7 @@ TuneR:
 
 Returns a wave object:
 ```{r}
-vivaldi <- readMP3("Music/vivaldi.mp3")
+vivaldi <- readMP3("data/vivaldi.mp3")
 plot(vivaldi)
 ```
 ```{r}
@@ -73,6 +73,9 @@ Audio:
 ```{r, error=TRUE}
 audio::play(vivaldi) #this does not work on the cloud either
 ```
+
+helpful resource:
+https://www.rdocumentation.org/packages/tuneR/versions/1.3.3/topics/tuneR 
 
 SeeWave:
 

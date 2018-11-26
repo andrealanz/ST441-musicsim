@@ -1,0 +1,29 @@
+---
+title: "lilypond_music"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tuneR)
+```
+
+
+Save lines of ode
+```{r}
+notes <- scan("data/ode.ly", skip = 3, nlines = 4, what = character())
+```
+
+```{r}
+random <- sample(notes, 63, replace = TRUE)
+
+writeLilypond <- function(notes, filename = "") {
+  cat(c("\\score{\n {\n  \\tempo 4 = 120",
+        paste(" ",  strwrap(paste(notes,collapse = " "))),
+        " }\n \\layout{}\n \\midi{}\n}"),
+      sep = "\n", file = filename)
+}
+
+writeLilypond(random, filename = "test.ly")
+```
+
