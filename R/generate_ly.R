@@ -5,14 +5,22 @@ generate_ly <- function(sample, file_name = "my_song.ly") {
     Wobj <- bind(Wobj, sample[[i]])
   }
  
-  Wobjm <- mono(Wobj, "left")
-  Wobjm11 <- downsample(Wobjm, 11025)
-  Wobjm11s <- extractWave(Wobjm11, from = 1000, to = 17000)
-  WspecObject <- periodogram(Wobjm11s, normalize = TRUE, width = 1024, overlap = 512)
+  if(n <= 4){
+    bars <- 1
+  }else{
+    if(n %% 4 == 0){
+      bars <- n/4
+    }else{
+      bars <- n %/% 4 + 1
+    }
+  }
+  
+  WspecObject <- periodogram(Wobj, normalize = TRUE, width = 1024)
   ff <- FF(WspecObject)
   notes <- smoother(noteFromFF(ff))
   
-  qlily <- quantMerge(notes, 4, 4, 2)
+  melodyplot(WspecObject, notes)
+  qlily <- quantMerge(notes = notes, bars = bars , barsize = 4, minlength = 4)
   
   lilyinput(qlily, file = file_name)
 }
