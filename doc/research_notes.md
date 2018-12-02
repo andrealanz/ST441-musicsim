@@ -9,6 +9,8 @@ output:
 
 ## Related Resources
  
+This file provides resources related to my project, as well as my notes.
+ 
 #### 1. Araya-Salas, M. (2012). Is birdsong music?. Significance, 9: 4-7. doi:10.1111/j.1740-9713.2012.00613.x
 
 - claims music follows "strict rules", frequencies in simple ratios to be considered musical intervals. One example: in the ratio of 5:4.
@@ -40,6 +42,8 @@ output:
 #### 5. Benson, D. (2008). Music: a Mathematical Offering. Cambridge: Cambridge University Press.
 - a book about the mathematics behind music, including waves and harmonics, different scales, and how music is stored digitally.
 - the chapters related to digital music and synthesis may be most helpful for my purposes. The information related to scales and ratios may also be useful.
+-  "Stringed and wind instruments naturally produce a sound
+that consists of exact integer multiples of a fundamental frequency."
 
 ## R package exploration
 
@@ -49,3 +53,31 @@ Sources for related R packages:
 - https://cran.r-project.org/web/packages/seewave/vignettes/seewave_IO.pdf (seewave, tuneR, and audio)
 - https://cran.r-project.org/web/packages/warbleR/index.html (warbleR)
 
+
+
+TuneR:
+
+The following MP3 file was generated from a youtube video: https://www.youtube.com/watch?v=Xix3UOOtND4.
+
+Reading an MP3 returns a wave object:
+
+```r
+vivaldi <- readMP3("data/vivaldi.mp3")
+plot(vivaldi) # plots the wave file
+```
+
+![](research_notes_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
+
+The wave file can then be played:
+
+```r
+#play(vivaldi,wmplayer.exe) #note this does not work on the cloud
+```
+
+Audio:
+
+```r
+#audio::play(vivaldi) #this does not work on the cloud either
+```
+
+Note that I investigated seewave, but I decided it was not useful for my project.

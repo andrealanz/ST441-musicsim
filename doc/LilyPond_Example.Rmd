@@ -8,18 +8,17 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tuneR)
-setwd("/cloud/project")
 ```
 
 This document includes my notes and reproduction of code from following along from a resource from a textbook:
 
 Braun W., Murdoch D. (2016). A First Course in Statistical Programming with R. Cambridge: Cambridge University Press, 143-147.
 
-Which can be found in the 'doc' directory.
+Which can be found under 'Resources' in the 'doc' directory.
 
 ### Reproduction of Textbook Example:
 
-Save lines of Beethoven's "Ode to Joy" in Lilypond format:
+Save lines of Beethoven's "Ode to Joy" in Lilypond format, which I have done and placed in the 'doc' directory:
 ```{r}
 notes <- scan(file = "data/ode.ly", skip = 3, nlines = 4, what = character())
 ```
@@ -90,3 +89,6 @@ Using the LilyPond app, I can convert the file to .midi and listen to it.
 new_song <- writeLilypond(generateTransitions(counts, 100))
 ```
 
+The new song is located in the 'results' directory.
+
+Note that while I find it interesting that a new song can be generated using the notes from an existing song, since my project purpose was to create music from scratch, I did not have time to explore the idea illustrated in this file.
