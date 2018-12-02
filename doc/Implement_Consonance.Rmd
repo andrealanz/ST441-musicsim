@@ -2,14 +2,18 @@
 title: "Sonance"
 author: "Andrea Lanz"
 date: "11/26/2018"
-output: html_document
-   keep_md: true
+output: 
+   html_document:
+      keep_md: true
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+devtools::load_all()
 library(purrr)
+library(combinat)
 library(here)
+library(tuneR)
 ```
 
 ## Consonace 
@@ -63,20 +67,108 @@ Note that middle C is the fourth element in 'C_major', and each note has 7 octav
 
 Create a transition matrix that only considers notes in the C major scale:
 ```{r}
-P <- matrix(numeric(88), nrow = 88, ncol = 88) #create a zero matrix
-P[C_major, C_major] = 1/length(C_major)
-rowSums(P)
+P1 <- matrix(numeric(88), nrow = 88, ncol = 88) #create a zero matrix
+P1[C_major, C_major] = 1/length(C_major)
+rowSums(P1)
 ```
 
 Note that the row sums for the matrix are all 1 for the notes that we are considering, which is what is expected for a Markov transition matrix. 
 
 ```{r}
-sample <- markov_music(5,P)
-generate_lilypond(sample, 5, file_name = here("results", "implement_consonance_ex1.ly"))
+sample1 <- generate_markov_sample(5,P1)
+generate_lilypond(sample1, 5, file_name = here("results", "implement_consonance_ex1.ly"))
 ```
+
+This song sounds much more pleasant to listen to than notes randomly sampled from all 88.
 
 Note that this process is equivalent to sampling randomly from C major notes, since only C major notes have nonzero probability, with equal probability. This example song can be found in the 'results' directory called 'implement_consonance_ex1.ly'.
 
+Next, the C_major scale will be sampled from, but the probability of getting a note in a similar octave is greater than of a lower or higher octave.
 
+Gather the notes from each octave skipping 0 and 8:
+```{r}
+sorted_C_major <- sort(C_major) #sort the notes
+octaves <- list() #create an empty list
+count <- 2 #the first note is at position 2
+for( i in 1:7){
+   octaves[i] <- list(sorted_C_major[count:(count+5)]) #each octave is 6 notes before a note is repeated
+   count <- count + 6
+} 
 
+```
 
+Create the transition matrix where notes in the same octave have a higher probability of being selected.
+```{r}
+p1 <- 1 #weight for sampling from a different octave
+p2 <- 2 #weight for sampling from the same octave
+P2 <- matrix(numeric(88), nrow = 88, ncol = 88)
+for (i in 1:7){
+   for(j in 1:7){
+      if(j != i){
+         P2[unlist(octaves[i]), unlist(octaves[j])] <- p1/(p1*36 + p2*6) #ensures the rows sum to one
+      }else{
+         P2[unlist(octaves[i]), unlist(octaves[i])] <- p2/(p1*36 + p2*6)
+      }
+   }
+}
+```
+
+```{r}
+sample2 <- generate_markov_sample(5, P2)
+generate_lilypond(sample2, 5, file_name = here("results", "implement_consonance_ex2.ly"))
+```
+
+This still gives a lot of variation in pitch of each note, so I will not implement a method that constrains each note closer to its own octave. This example song can be found in the 'results' directory called 'implement_consonance_ex2.ly'.
+
+Create a transition matrix where notes sampled are more likely to be in the same octave or an octave one above
+```{r}
+p1 <- .01 #weight for sampling from two or more octaves below 
+p2 <- 1 #weight for sampling from within 1 octaves
+p3 <- 5 #weight for sampling from the same octave
+P3 <- matrix(numeric(88), nrow = 88, ncol = 88)
+for (i in 1:7){
+   for(j in 1:7){
+      if(j != i){
+         if(abs(j-i) > 1){
+            P3[unlist(octaves[i]), unlist(octaves[j])] <- p1  #weight for greater than one octave away
+         }else{
+            P3[unlist(octaves[i]), unlist(octaves[j])] <- p2 #weight for one octave away
+         }
+      }else{
+         P3[unlist(octaves[i]), unlist(octaves[i])] <- p3 #weight for the same octave
+      }
+   }
+}
+
+#the following ensures that the row sums are equal to 1
+sums <- rowSums(P3)
+P3[sums != 0, ] <- P3[sums != 0, ]/(sums[sums != 0])
+rowSums(P3)
+```
+
+Generate the file:
+```{r}
+sample3 <- generate_markov_sample(5, P3)
+generate_lilypond(sample3, 5, file_name = here("results", "implement_consonance_ex3.ly"))
+```
+
+The notes appear to be closer together, which indiciates that there is less variation in which octaves the notes are contained in, so this implementation seems to be working. This example song can be found in the 'results' directory called 'implement_consonance_ex3.ly'.
+
+But ultimately, the best results were found by constricting each note to its own octave:
+
+```{r}
+P4 <- matrix(numeric(88), nrow = 88, ncol = 88)
+for (i in 1:7){
+         P4[unlist(octaves[i]), unlist(octaves[i])] <- 1/6
+      }
+
+rowSums(P4)
+```
+
+Generate a file:
+```{r}
+sample4 <- generate_markov_sample(5, P4)
+generate_lilypond(sample4, 5, file_name = here("results", "implement_consonance_ex4.ly"))
+```
+
+This makes sense, since introducing variation in pitch in a random way is not the best way to produce consonance. This example song can be found in the 'results' directory called 'implement_consonance_ex4.ly'.
