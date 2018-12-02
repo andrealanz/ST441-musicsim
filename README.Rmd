@@ -10,13 +10,48 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 ```
-# Exploring the Simulation of Music
+# Simulating Music using R
 
 ### Author: Andrea Lanz
 
 A project that focuses on the quantitative representation of music and how it can be simulated. This project will explore the relationship between the numerical information behind sound and what is considered music. Using several related sources, this project will mainly focus on frequency of sound and analyzing the patterns of frequency that can be seen in music.
 
+#### Important Links
 
+The project presentation can be found at the following link:
+ - https://github.com/ST541-Fall2018/andrealanz-project-musicsim/blob/master/doc/project_presentation.pdf
 
+The project report can be found at the following link:
+ - https://github.com/ST541-Fall2018/andrealanz-project-musicsim/blob/master/doc/Report.pdf
 
+#### How to use this project:
 
+ 1. To understand the mechanics behind representing music in R, which includes converting Wave objects into LilyPond files and LilyPond files in general, I would recommend looking at the __[LilyPond_Example.md](https://github.com/ST541-Fall2018/andrealanz-project-musicsim/blob/master/doc/LilyPond_Example.md)__ and __[Wave_to_Lilypond.md](https://github.com/ST541-Fall2018/andrealanz-project-musicsim/blob/master/doc/Wave_to_Lilypond.md)__ files in the 'doc' directory.
+ 
+ 2. To understand my process behind implementing Markov chains and consonance into music, I would recommend looking at the  __[Implement_Markov.md](https://github.com/ST541-Fall2018/andrealanz-project-musicsim/blob/master/doc/Implement_Markov.md)__ and __[Implement_Consonance.md](https://github.com/ST541-Fall2018/andrealanz-project-musicsim/blob/master/doc/Implement_Consonance.md)__ files in the 'doc' directory.
+ 
+ 3. To begin simulating your own music, I would recommend first looking at the __[Function_Examples.md](https://github.com/ST541-Fall2018/andrealanz-project-musicsim/blob/master/doc/Function_Examples.md)__, then visiting the __['R' directory](https://github.com/ST541-Fall2018/andrealanz-project-musicsim/tree/master/R)__ to use the functions that were used in the project. Note that there are four functions, one which writes a Wave sample to .ly, one that samples notes randomly with no rhythm, one that samples notes randomly with rhythm, and one that samples notes using rhythm and Markov chains. More information about each function can be found in its __[documentation](https://github.com/ST541-Fall2018/andrealanz-project-musicsim/tree/master/man)__.
+ 
+ 4. To listen to the results produced by this project, visit the __['results'](https://github.com/ST541-Fall2018/andrealanz-project-musicsim/tree/master/results)__ directory, but take note of the project dependencies below. 
+ 
+ 5. Note that all of the data imported in this project can be found in the __['data'](https://github.com/ST541-Fall2018/andrealanz-project-musicsim/tree/master/data)__ directory.
+ 
+ 6. To get more information about basic music principles, the math behind music, and other related concepts, I would recommend looking at the __[Resources](https://github.com/ST541-Fall2018/andrealanz-project-musicsim/tree/master/doc/Resources)__ file under the 'doc' directory.
+
+#### Project Dependencies
+The following packages are necessary for the project's code and examples to work:
+ 
+ - tuneR
+ 
+ - purrr
+ 
+ - combinat
+ 
+ - here
+ 
+ - pastecs 
+
+The following program, which is available for Windows, macOS, and Linux, is required to convert the LilyPond(.ly) files produced by the 'generate_lilypond()' function and can be downloaded at the link below:
+
+  - __[LilyPond](http://lilypond.org/download.html)__ 
+ 
