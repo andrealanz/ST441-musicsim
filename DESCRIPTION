@@ -1,0 +1,16 @@
+Package: musicsim
+Title: Simulate Music
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Andrea",
+           family = "Lanz",
+           email = "lanz.andi@gmail.com")
+Description: A package that provides functions for generating music.
+Encoding: UTF-8
+LazyData: true
+Imports:
+    tuneR,
+    combinat,
+    pastecs,
+    purrr
+RoxygenNote: 6.1.1
