@@ -1,4 +1,4 @@
-markov_music <- function(num_bars, P){
+generate_markov_sample <- function(num_bars, P){
   notes <- (read.csv(here("data", "note_freq.csv")))$Frequency..Hz. #read in notes data
   #create a list of all possible measures
   bars <- c( 2, 
@@ -20,7 +20,11 @@ markov_music <- function(num_bars, P){
   
   n <- length(bar_samp) #get the number of notes needed
   steps <- numeric(n) #create a vector of 0s
-  steps[1] <- sample(1:88, 1, prob = P[1,]) #sample for the first note
+  
+  #checks that the first step has nonzero probability
+  while(sum(P[steps[1],]) == 0){ 
+  steps[1] <- sample(1:88, 1) #sample for the first note
+  }
   
   #sample each note by using the probabilities from the transition matrix
   for (t in 1:(n-1)){
