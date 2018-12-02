@@ -4,30 +4,33 @@
     \time 4/4
     \key c \major
     \clef treble
-    bes''''4
-    cis,8
-    c4
-    es,4.
-    fis8
     fis'''8
-    g,,8
-    a'''8
-    g''8
+    a''8
+    a,4
+    es,8
+    gis'4
+    e''8
+    bes''''8
+    cis'8
+    b'''4
+    g'4
+    fis,,4
     c'8
-    e'''4
-    cis4
-    fis''8
-    fis,,8
     g,,2
-    es'''8
-    b,,8
-    bes,,8
-    gis,,2
+    cis'''8
+    b'''8
+    e8
+    d''4
+    c'''''4
+    g,,4
+    a8
+    es'8
+    c'8
+    es'''4
+    f8
+    fis''4
     b''8
-    b''8
-    fis,,8
-    fis'4
-    e2
+    bes,8
    \bar "|."
   }
   \paper{

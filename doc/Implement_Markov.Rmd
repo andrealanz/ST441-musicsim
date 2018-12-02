@@ -7,6 +7,11 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+devtools::load_all()
+library(purrr)
+library(combinat)
+library(here)
+library(tuneR)
 ```
 
 This file includes my process for implementing Markov Chains. Note that this code is influenced by an example in a textbook:

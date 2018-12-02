@@ -5,10 +5,7 @@ output:
     keep_md: true
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-library(here)
-```
+
 
 This document includes my notes and reproduction of code from following along from a resource from a textbook:
 
@@ -19,12 +16,14 @@ Which can be found under 'Resources' in the 'doc' directory.
 ### Reproduction of Textbook Example:
 
 Save lines of Beethoven's "Ode to Joy" in Lilypond format, which I have done and placed in the 'data' directory:
-```{r}
+
+```r
 notes <- scan(file = here("data","ode.ly"), skip = 3, nlines = 4, what = character())
 ```
 
 Writes a function that takes a random sample of the notes and writes it to a Lilypond file:
-```{r}
+
+```r
 random <- sample(notes, 63, replace = TRUE)
 
 writeLilypond <- function(notes, filename = "") {
@@ -38,7 +37,8 @@ writeLilypond(random, filename = "test.ly")
 ```
 
 Writes a function to count the transitions in the original song:
-```{r}
+
+```r
 countTransitions <- function(notes, n) {
   len <- length(notes)
   notes <- c(rep("START", n), notes, "STOP")
@@ -61,7 +61,8 @@ countTransitions <- function(notes, n) {
 ```
 
 Generate new music:
-```{r}
+
+```r
 generateTransitions <- function(counts, len, filename = "") {
   n <- counts$n 
   len <- len + n
@@ -78,15 +79,29 @@ generateTransitions <- function(counts, len, filename = "") {
 ```
 
 Textbook's example:
-```{r}
+
+```r
 counts <- countTransitions(notes,2)
 writeLilypond(generateTransitions(counts, 100), filename = "new_song.ly")
 ```
 
 Using the LilyPond app, I can convert the file to .midi and listen to it.
 
-```{r}
+
+```r
 new_song <- writeLilypond(generateTransitions(counts, 100))
+```
+
+```
+## \score{
+##  {
+##   \tempo 4 = 120
+##   e'4 e'4 f'4 g'4 g'4 f'4 e'4 d'4 c'4 c'4 d'4 e'8 f'8 e'4 d'4 g2 e'4
+##   e'4 f'4 g'4 g'4 f'4 e'4 d'4 c'4 c'4 d'4 e'4 d'4. c'8 c'2
+##  }
+##  \layout{}
+##  \midi{}
+## }
 ```
 
 The new song is located in the 'results' directory.
