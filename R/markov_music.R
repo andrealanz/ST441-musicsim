@@ -1,5 +1,5 @@
-markov_music <- function(num_bars){
-  notes <- (read.csv("data/note_freq.csv"))$Frequency..Hz. #read in notes data
+markov_music <- function(num_bars, P){
+  notes <- (read.csv(here("data", "note_freq.csv")))$Frequency..Hz. #read in notes data
   #create a list of all possible measures
   bars <- c( 2, 
              list(c(1,1)), 
@@ -16,10 +16,7 @@ markov_music <- function(num_bars){
   #take a sample of measures
   bar_samp <- unlist(sample(bars, num_bars, replace = TRUE, prob = probs), use.names = FALSE)
   
-  #implement Markov chains
-  x <- c(1:44,44:1)
-  P <- matrix(unlist(rerun(88, exp(x)), use.names = FALSE), 88, 88, byrow = TRUE)
-  P <- P/rowSums(P)
+  #implement Markov Chains
   
   n <- length(bar_samp) #get the number of notes needed
   steps <- numeric(n) #create a vector of 0s

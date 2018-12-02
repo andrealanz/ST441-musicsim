@@ -9,6 +9,7 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(purrr)
+library(here)
 ```
 
 ## Consonace 
@@ -21,9 +22,13 @@ library(purrr)
 
 The purpose of this file is to implement more consonant notes in my simulation of music. 
 
+The following data was found at the following source:
+
+ - Suits, B. H., Physics of Music - Notes. Physics Department, Michigan Technological University. http://pages.mtu.edu/~suits/notefreqs.html
+
 Read in notes data:
 ```{r}
-full_notes <- (read.csv("data/note_freq.csv")) #includes all parts of dataframe
+full_notes <- read.csv(here("data", "note_freq.csv")) #includes all parts of dataframe
 full_notes
 notes <- (read.csv("data/note_freq.csv"))$Frequency..Hz. #just the frequencies
 ```
@@ -47,23 +52,31 @@ note_Gsharp <- seq(from = 4, to = 88, by = 12)
 
 Create a transition matrix for the C major scale (C,D,E,F,G,A):
 
+View the C Major note frequencies:
 ```{r}
-C_major <- notes[c(note_C,note_D, note_E, note_F, note_G, note_A)]
+C_major <- c(note_C,note_D, note_E, note_F, note_G, note_A)
+C_major_full <- full_notes[C_major, ] 
+C_major_full
 ```
 
+Note that middle C is the fourth element in 'C_major', and each note has 7 octaves, except for C and A which have 8. 
+
+Create a transition matrix that only considers notes in the C major scale:
 ```{r}
-n <- length(C_major)
-P <- list(numeric(n^2))
-for(i in 1:n){
-   P[i] <- unlist(rerun(n, c(i:n, (i-1):1)), use.names = FALSE)
-}
+P <- matrix(numeric(88), nrow = 88, ncol = 88) #create a zero matrix
+P[C_major, C_major] = 1/length(C_major)
+rowSums(P)
 ```
 
+Note that the row sums for the matrix are all 1 for the notes that we are considering, which is what is expected for a Markov transition matrix. 
 
 ```{r}
-x <- c(1:44,44:1)
-P <- matrix(unlist(rerun(88, exp(x)), use.names = FALSE), 88, 88, byrow = TRUE)
-P <- P/rowSums(P)
+sample <- markov_music(5,P)
+generate_lilypond(sample, 5, file_name = here("results", "implement_consonance_ex1.ly"))
 ```
+
+Note that this process is equivalent to sampling randomly from C major notes, since only C major notes have nonzero probability, with equal probability. This example song can be found in the 'results' directory called 'implement_consonance_ex1.ly'.
+
+
 
 

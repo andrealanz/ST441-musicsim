@@ -22,10 +22,10 @@ sample1 <- generate_simple_sample(n)
 
 Create the file, which will be placed in the specified path:
 ```{r}
-generate_lilypond(sample1, n, file_name = "results/example1.ly")
+generate_lilypond(sample1, n, file_name = here("results", "function_examples_ex1.ly"))
 ```
 
-And the function with plot the notes, which can be diabled with an argument.
+And the function with plot the notes, which can be diabled with an argument. This example song can be found in the 'results' directory called 'function_examples_ex1.ly'.
 
 ### Simple random notes with rhythm:
 The second example will show how to generate a song with more variation in speed.
@@ -38,9 +38,9 @@ sample2 <- generate_rhythm_sample(m)
 
 Create the file, which will be placed in the specified path:
 ```{r}
-generate_lilypond(sample2, m, file_name = "results/example2.ly")
+generate_lilypond(sample2, m, file_name = here("results", "function_examples_ex2.ly"))
 ```
 
-The notes are as shown above.
+The notes are as shown above, and this example song can be found in the 'results' directory called 'function_examples_ex2.ly'.
 
 ### Rhythm and notes with consonance:

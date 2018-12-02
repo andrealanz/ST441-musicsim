@@ -55,13 +55,14 @@ melodyplot(WspecObject, notes)
 
 Creates a datafram that can be used to produce a Lilypad file:
 ```{r}
-qlily <- quantMerge(snotes, 4, 4, 2)
+qlily <- quantMerge(notes, 4, 4, 2)
 qlily
 ```
 
 Write a Lilypad file using the dataframe created above:
 ```{r}
-lilyinput(qlily, file = "wspec.ly")
+lilyinput(qlily, file = here("results", "wave_to_lily_ex.ly"))
 ```
 
-When played, the output should be two notes, one of which is an octave above the other. The plots generated above should reflect this.
+When played, the output should be two notes, one of which is an octave above the other. The plots generated above should reflect this. This example song can be found in the 'results' directory called 'wave_to_lily_ex.ly'.
+

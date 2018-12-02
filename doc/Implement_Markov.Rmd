@@ -70,8 +70,8 @@ for (t in 1:(m-1)){
   samp1[t + 1] <- sample(1:88, size = 1, prob = P[samp1[t], ])
 }
 
-generate_ly(map(notes[samp1], ~ (sine(.))), bars = 2) #generate a .ly file for the sampled notes
+generate_lilypond(map(notes[samp1], ~ (sine(.))), bars = 2, file_name = here("results", "implement_markov_ex1")) #generate a .ly file for the sampled notes
 ```
 
-It appears that the higher notes are selected more often, providing evidence that our Markov chain implementation is indeed working.
+It appears that the higher notes are selected more often, providing evidence that our Markov chain implementation is indeed working. This example song can be found in the 'results' directory called 'implement_markov_ex1'.
 
