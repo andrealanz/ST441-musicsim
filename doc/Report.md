@@ -51,6 +51,9 @@ In order to sample notes in a useable format to produce a playable file, R packa
  - a way to sample from notes and generate a playable file
  - a way to implement rhythm
  - a way to implement relationships between notes
+ 
+![](Report_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
+ 
 
 ### 3.2 Further Study
   The results as described above came close to producing a pleasant tune, but due to the multidimensionality and complexity of music, there are still many aspects of music that have not been implemented in this project. One possibility includes adding more complexity to the Markov chain method for sampling notes, so that more recognizable patterns occur. There are more musical scales to explore, left and right hand notes, chords instead of single notes, and tempo as well as many more aspects not mentioned. There is more work to be done before music as we can recognize it is generated using these methods.
