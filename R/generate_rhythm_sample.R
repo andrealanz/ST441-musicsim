@@ -1,5 +1,5 @@
 generate_rhythm_sample <- function(num_bars){
-  notes <- (read.csv("data/note_freq.csv"))$Frequency..Hz. #read in notes data
+  notes <- (read.csv(here("data", "note_freq.csv")))$Frequency..Hz. #read in notes data
   #list each possible permutation of notes in a measure, 1 note up to 8
   # 2 = whole, 1 = half, 0.5 = quarter, 0.25 = eighth
   bars <- c( 2, 
