@@ -1,0 +1,46 @@
+---
+title: "Function_Examples"
+author: "Andrea Lanz"
+date: "12/2/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+The purpose of this document is to provide examples for generating music using the functions I have created.
+
+### Simple random notes:
+The first example will show how to generate music using the simple random sample method:
+
+First generate a sample:
+```{r}
+n <- 5 #assign the number of measures to output
+sample1 <- generate_simple_sample(n)
+```
+
+Create the file, which will be placed in the specified path:
+```{r}
+generate_lilypond(sample1, n, file_name = "results/example1.ly")
+```
+
+And the function with plot the notes, which can be diabled with an argument.
+
+### Simple random notes with rhythm:
+The second example will show how to generate a song with more variation in speed.
+
+Generate the sample, specifying the number of measures:
+```{r}
+m <- 5 #assign the number of measures to output
+sample2 <- generate_rhythm_sample(m)
+```
+
+Create the file, which will be placed in the specified path:
+```{r}
+generate_lilypond(sample2, m, file_name = "results/example2.ly")
+```
+
+The notes are as shown above.
+
+### Rhythm and notes with consonance:
