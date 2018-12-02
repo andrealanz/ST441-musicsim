@@ -1,1 +1,9 @@
+^project\.Rproj$
+^\.Rproj\.user$
 ^README\.Rmd$
+^project\.Rcheck$
+^project.*\.tar\.gz$
+^project.*\.tgz$
+^musicsim\.Rcheck$
+^musicsim.*\.tar\.gz$
+^musicsim.*\.tgz$
