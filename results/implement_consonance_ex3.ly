@@ -4,30 +4,29 @@
     \time 4/4
     \key c \major
     \clef treble
-    c'8
-    d'8
-    a'8
     g'8
+    a'8
+    c'4
+    g'8
+    c'4
     e'8
-    c8
-    f8
-    d8
-    f2
-    e2
-    d4
-    c4
-    f4.
-    es,8
-    e,4
-    es,8
-    g8
-    f,8
-    e4.
-    a2
-    a8
-    d8
+    c'1
+    c'8
+    e'8
+    f'8
+    e'4
+    f'8
+    e'8
+    a'8
     e8
-    a8
+    g8
+    e8
+    c8
+    g8
+    e8
+    a'8
+    f'8
+    c'1
    \bar "|."
   }
   \paper{

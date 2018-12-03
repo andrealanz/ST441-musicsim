@@ -1,5 +1,5 @@
 ---
-title: "Sonance"
+title: "Implementing Consonance"
 author: "Andrea Lanz"
 date: "11/26/2018"
 output: 
@@ -123,7 +123,7 @@ full_notes
 ```
 
 ```r
-notes <- (read.csv("data/note_freq.csv"))$Frequency..Hz. #just the frequencies
+notes <- (read.csv(here("data", "note_freq.csv")))$Frequency..Hz. #just the frequencies
 ```
 
 The following will assign the sequence of numbers that corresponds to all octaves of a specific note in the frequency data.
@@ -222,7 +222,7 @@ Note that the row sums for the matrix are all 1 for the notes that we are consid
 
 
 ```r
-sample1 <- markov_music(5,P1)
+sample1 <- generate_markov_sample(5,P1)
 generate_lilypond(sample1, 5, file_name = here("results", "implement_consonance_ex1.ly"))
 ```
 
@@ -238,15 +238,34 @@ Gather the notes from each octave skipping 0 and 8:
 
 ```r
 sorted_C_major <- sort(C_major) #sort the notes
-octaves <- list() #create an empty list
-count <- 2 #the first note is at position 2
-for( i in 1:7){
-   octaves[i] <- list(sorted_C_major[count:(count+5)]) #each octave is 6 notes before a note is repeated
-   count <- count + 6
-} 
+octaves <- split(sorted_C_major[2:43], ceiling(seq_along(sorted_C_major[2:43])/6))
+octaves
 ```
 
-Create the transition matrix where notes in the same octave have a higher probability of being selected.
+```
+## $`1`
+## [1]  4  6  8  9 11 13
+## 
+## $`2`
+## [1] 16 18 20 21 23 25
+## 
+## $`3`
+## [1] 28 30 32 33 35 37
+## 
+## $`4`
+## [1] 40 42 44 45 47 49
+## 
+## $`5`
+## [1] 52 54 56 57 59 61
+## 
+## $`6`
+## [1] 64 66 68 69 71 73
+## 
+## $`7`
+## [1] 76 78 80 81 83 85
+```
+
+Create the transition matrix where notes in the same octave have a higher probability of being selected. **Note** I implemented the following code in C++, and the documentation can be found in the 'doc' directory titled [Timing_Experiments.Rmd](https://github.com/ST541-Fall2018/andrealanz-project-musicsim/blob/master/doc/Timing_Experiments.Rmd)*
 
 ```r
 p1 <- 1 #weight for sampling from a different octave
@@ -265,7 +284,7 @@ for (i in 1:7){
 
 
 ```r
-sample2 <- markov_music(5, P2)
+sample2 <- generate_markov_sample(5, P2)
 generate_lilypond(sample2, 5, file_name = here("results", "implement_consonance_ex2.ly"))
 ```
 
@@ -309,10 +328,40 @@ rowSums(P3)
 Generate the file:
 
 ```r
-sample3 <- markov_music(5, P3)
+sample3 <- generate_markov_sample(5, P3)
 generate_lilypond(sample3, 5, file_name = here("results", "implement_consonance_ex3.ly"))
 ```
 
 ![](Implement_Consonance_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
 
 The notes appear to be closer together, which indiciates that there is less variation in which octaves the notes are contained in, so this implementation seems to be working. This example song can be found in the 'results' directory called 'implement_consonance_ex3.ly'.
+
+But ultimately, the best results were found by constricting each note to its own octave:
+
+
+```r
+P4 <- matrix(numeric(88), nrow = 88, ncol = 88)
+for (i in 1:7){
+         P4[unlist(octaves[i]), unlist(octaves[i])] <- 1/6
+}
+
+rowSums(P4) #check that the rows sums are 1
+```
+
+```
+##  [1] 0 0 0 1 0 1 0 1 1 0 1 0 1 0 0 1 0 1 0 1 1 0 1 0 1 0 0 1 0 1 0 1 1 0 1
+## [36] 0 1 0 0 1 0 1 0 1 1 0 1 0 1 0 0 1 0 1 0 1 1 0 1 0 1 0 0 1 0 1 0 1 1 0
+## [71] 1 0 1 0 0 1 0 1 0 1 1 0 1 0 1 0 0 0
+```
+
+Generate a file:
+
+```r
+sample4 <- generate_markov_sample(5, P4)
+generate_lilypond(sample4, 5, file_name = here("results", "implement_consonance_ex4.ly"))
+```
+
+![](Implement_Consonance_files/figure-html/unnamed-chunk-12-1.png)<!-- -->
+
+This makes sense, since introducing variation in pitch in a random way is not the best way to produce consonance. This example song can be found in the 'results' directory called 'implement_consonance_ex4.ly'.
+
