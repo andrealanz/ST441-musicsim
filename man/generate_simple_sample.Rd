@@ -10,7 +10,7 @@ generate_simple_sample(num_bars)
 \item{num_bars}{number of bars/measures, in common time signature, that will be produced.}
 }
 \value{
-a list of wave objects
+a list of Wave objects
 }
 \description{
 Allows you to create a sample of Wave objects with notes of equal length. Where the notes are 

@@ -2,23 +2,27 @@
 % Please edit documentation in R/generate_lilypond.R
 \name{generate_lilypond}
 \alias{generate_lilypond}
-\title{Create a .ly file}
+\title{Create a LilyPond(.ly) file}
 \usage{
 generate_lilypond(sample, bars, file_name = "my_song.ly",
   quiet = FALSE)
 }
 \arguments{
-\item{sample}{a vector of wave objects}
+\item{sample}{a list of Wave objects}
 
-\item{bars}{number of bars}
+\item{bars}{number of bars/measures in the song, which must equal the number of bars in \code{sample},
+where in this case a bar is a 2 second interval with four beats, where one beat is a quarter note.}
 
-\item{file_name}{name of the file to export}
+\item{file_name}{path of the file to export, where the default is "my_song.ly".}
+
+\item{quiet}{either true or false, where false indicates that a melody plot will be produced.}
 }
 \value{
-a file that can be executed by the LilyPond program
+an exported file that can be executed by the LilyPond program
 }
 \description{
-Allows you to create a playable .ly file.
+Allows you to create a playable .ly file using the text compiler program, LilyPond. The function
+accepts four parameters. Unless otherwise specified, a melody plot of the song will also be produced.
 }
 \examples{
 sample <- c(sine(440), sine(220))

@@ -3,9 +3,13 @@
 #' Allows you to create a sample of Wave objects with notes of varying speeds, and relationship
 #' between notes by providing a Markov transition matrix.
 #'
-#' @param num_bars number of bars/measures that will be produced.
+#' @param num_bars number of bars/measures that will be produced, where each bar has four beats, with
+#' one beat considered a quarter note.
 #' @param P an 88 x 88 Markov transition matrix, where the first element corresponds to the first 
-#' note that can be found on a standard 88 key piano.  
+#' note that can be found on a standard 88 key piano. For this function to work properly, \code{P}
+#' must have non-zero rows summing to 1.
+#' 
+#' @return a list of Wave objects  
 #' 
 #' @examples
 #' P <- matrix(unlist(rerun(88,exp(c(1:44,44:1)))), 88, 88, byrow = TRUE)
@@ -40,7 +44,7 @@ generate_markov_sample <- function(num_bars, P){
   
   #checks that the first step has nonzero probability
   while(sum(P[steps[1],]) == 0){ 
-  steps[1] <- sample(1:88, 1) #sample for the first note
+    steps[1] <- sample(1:88, 1) #sample for the first note
   }
   
   #sample each note by using the probabilities from the transition matrix

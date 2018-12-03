@@ -1,12 +1,15 @@
-#' Create a .ly file
+#' Create a LilyPond(.ly) file
 #'
-#' Allows you to create a playable .ly file.
+#' Allows you to create a playable .ly file using the text compiler program, LilyPond. The function
+#' accepts four parameters. Unless otherwise specified, a melody plot of the song will also be produced.
 #'
-#' @param sample a vector of wave objects
-#' @param bars number of bars 
-#' @param file_name name of the file to export
+#' @param sample a list of Wave objects
+#' @param bars number of bars/measures in the song, which must equal the number of bars in \code{sample},
+#' where in this case a bar is a 2 second interval with four beats, where one beat is a quarter note.
+#' @param file_name path of the file to export, where the default is "my_song.ly".
+#' @param quiet either true or false, where false indicates that a melody plot will be produced.
 #' 
-#' @return a file that can be executed by the LilyPond program
+#' @return an exported file that can be executed by the LilyPond program
 #' 
 #' @examples
 #' sample <- c(sine(440), sine(220))

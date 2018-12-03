@@ -7,10 +7,15 @@
 generate_markov_sample(num_bars, P)
 }
 \arguments{
-\item{num_bars}{number of bars/measures that will be produced.}
+\item{num_bars}{number of bars/measures that will be produced, where each bar has four beats, with
+one beat considered a quarter note.}
 
 \item{P}{an 88 x 88 Markov transition matrix, where the first element corresponds to the first 
-note that can be found on a standard 88 key piano.}
+note that can be found on a standard 88 key piano. For this function to work properly, \code{P}
+must have non-zero rows summing to 1.}
+}
+\value{
+a list of Wave objects
 }
 \description{
 Allows you to create a sample of Wave objects with notes of varying speeds, and relationship

@@ -5,7 +5,7 @@
 #'
 #' @param num_bars number of bars/measures, in common time signature, that will be produced.
 #' 
-#' @return a list of wave objects
+#' @return a list of Wave objects
 #' 
 #' @examples
 #' simple_sample <- generate_simple_sample(5)
