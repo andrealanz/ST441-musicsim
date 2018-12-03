@@ -3,9 +3,9 @@ title: "Simulating Music Using R"
 author: "Andrea Lanz"
 date: "12/2/2018"
 output:
-  pdf_document: default
   html_document:
     keep_md: yes
+  pdf_document: default
 indent: true
 abstract: To investigate how sound, and ultimately music, is related to data (specifically
   frequency), methods to generate specific frequencies in R were utilized for the
@@ -55,7 +55,7 @@ To maintain the reproducability of this project, the 'here' package was utilized
 Efforts have been made to make sections of code in this project more efficient. Timing experiments and specific examples of increased efficiency can be found under  __*[Timing_Experiments](https://github.com/ST541-Fall2018/andrealanz-project-musicsim/blob/master/doc/Timing_Experiments.md)*__  in the 'doc' directory, which documents replacing inefficient iteration and implementing C++ functions.
 
 ### 2.4 Documentation
-To improve the ease of use of the functions produced in this project, function documentation was used to provide useful information about each function. A package titled 'musicsim' was created, and the documentation can be accessed when the package is loaded. The function documentation files can be found in the __*['man](https://github.com/ST541-Fall2018/andrealanz-project-musicsim/tree/master/man)*__ directory.
+To improve the ease of use of the functions produced in this project, function documentation was used to provide useful information about each function. A package titled 'musicsim' was created, and the documentation can be accessed when the package is loaded. The function documentation files can be found in the __*['man'](https://github.com/ST541-Fall2018/andrealanz-project-musicsim/tree/master/man)*__ directory.
 
 ## 3 Conclusions
 
