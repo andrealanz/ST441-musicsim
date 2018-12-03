@@ -34,7 +34,7 @@ Read in notes data:
 ```{r}
 full_notes <- read.csv(here("data", "note_freq.csv")) #includes all parts of dataframe
 full_notes
-notes <- (read.csv("data/note_freq.csv"))$Frequency..Hz. #just the frequencies
+notes <- (read.csv(here("data", "note_freq.csv")))$Frequency..Hz. #just the frequencies
 ```
 
 The following will assign the sequence of numbers that corresponds to all octaves of a specific note in the frequency data.
