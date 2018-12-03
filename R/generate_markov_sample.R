@@ -1,4 +1,21 @@
+#' Create a sample of music notes with rhythm and consonance.
+#'
+#' Allows you to create a sample of Wave objects with notes of varying speeds, and relationship
+#' between notes by providing a Markov transition matrix.
+#'
+#' @param num_bars number of bars/measures that will be produced.
+#' @param P an 88 x 88 Markov transition matrix, where the first element corresponds to the first 
+#' note that can be found on a standard 88 key piano.  
+#' 
+#' @examples
+#' P <- matrix(unlist(rerun(88,exp(c(1:44,44:1)))), 88, 88, byrow = TRUE)
+#' P <- P/rowSums(P)
+#' generate_markov_sample(5, P)
 generate_markov_sample <- function(num_bars, P){
+  #error handles
+  if(!is.numeric(num_bars) || num_bars != round(num_bars) || num_bars <= 0){
+    stop("Input is not a positive integer")
+  }
   notes <- (read.csv(here("data", "note_freq.csv")))$Frequency..Hz. #read in notes data
   #create a list of all possible measures
   bars <- c( 2, 

@@ -6,6 +6,7 @@ output:
   pdf_document: default
   html_document:
     keep_md: yes
+indent: true
 abstract: To investigate how sound, and ultimately music, is related to data (specifically
   frequency), methods to generate specific frequencies in R were utilized for the
   purpose of producing a clip of sound with musical qualities. A general definition
@@ -23,8 +24,8 @@ library(tuneR)
 ```
 
 ## 1  Introduction
-  To begin the process of simulating music, a basic definition of music was determined and used as the motivation for the simulation. A large portion of what defines music is the relationship between each sound of a song. The relationship between each sound in music can be described by the ratio between the frequencies of subsequent sounds. Only certain ratios between frequencies are "allowed"; typically the frequencies that satisfy the requirement for music are in accordance with one of the existing scales, or groupings of ordered fundamental frequencies, which divide the octave (an interval where the ending frequency is double the beginning frequency) [1]. The heptatonic scale, which contains seven notes per octave, is the scale that this project will base its simulation on. Therefore, songs composed of notes from an established scale will create the fundamental quality that defines music.
-
+  To begin the process of simulating music, a basic definition of music was determined and used as the motivation for the simulation. A large portion of what defines music is the relationship between each sound of a song. The relationship between each sound in music can be described by the ratio between the frequencies of subsequent sounds. Only certain ratios between frequencies are "allowed"; typically the frequencies that satisfy the requirement for music are in accordance with one of the existing scales, or groupings of ordered fundamental frequencies, which divide the octave (an interval where the ending frequency is double the beginning frequency) [1]. The heptatonic scale, which contains seven notes per octave, is the scale that this project will base its simulation on. Therefore, songs composed of notes from an established scale will create the fundamental quality that defines music.  
+  
 The concept of simple ratios between frequencies and musical scales gives rise to the concept of consonance and dissonance between notes, where consonant sounds are sound that are pleasant to hear, they sound "good" together, while dissonant sounds are harsher together, they seem like they clash. Notes with simple ratios between their frequencies  are more consonant, where the ratio 3:2 (a perfect fifth) and 1:2 (an octave) are significantly consonant and underlie the consonance within a scale [2].
 
 As well as which frequencies a song must have to be considered musical, there are more complex aspects of what makes sound music. There are many different dimensions of music, such as melodic form, tones and pitch (related to frequency), rhythm and rhythmic shifts, and intonation [6]. For the purposes of this project, to simplify the process of generating music, the focus will be placed on generating notes that are related based on the heptatonic scale as well as implementing aspects of rhythm, which includes the duration of notes as well as pattern in notes.
@@ -44,13 +45,16 @@ The third approach used for sampling notes incorporates the concept of consonace
 ### 2.2 Output
 In order to sample notes in a useable format to produce a playable file, R package "tuneR" is useful for generating Wave objects, which hold sound information. Once frequencies are sampled, each note can be converted into a Wave format, which can then be converted into a periodogram, which estimates the spectral density of a wave object, and finally into a Wspec object which holds the information for multiple periodograms. The information held in the Wspec object can then be used to generate a file readable by the Lilypond program, where the file output of choice for this project is the Lilypond file format. Lilypond is a compiled text program that converts text to an audio file as well as into to sheet music. Thus a sample of frequencies can be converted into a format readable by Lilypond and therefore into a playable format.
 
-### 2.x Correctness
+### 2.1 Correctness
+To ensure the correctness of the code, informal testing as well as formal testing was done. After writing functions, they were informally tested using simple examples that are written up in the 'doc' directory. As well as informal testing, formal testing was conducted for input and output of the functions created in the project. The testing files can be found in the __*['test'](https://github.com/ST541-Fall2018/andrealanz-project-musicsim/tree/master/tests)*__ directory.
 
-### 2.x Reproducability
+### 2.2 Reproducability
+To maintain the reproducability of this project, the 'here' package was utilized to avoid absolute file paths. All imported data was placed in its own directory. This project was created using the Windows 10 operating system, and the reproducability was tested on MacOS X. All files were successfully run, and functions were running correctly. However, the external application Lilypond used to read the files generated may be more complicated to work with, since it requires manual compiling by opening the application, where it is much simpler for Windows 10. Also note that MacOS X does not have a built in MIDI player, so the files output by Lilypond may need to be converted manually or a MIDI player may need to be installed.
 
-### 2.x Efficiency
+### 2.3 Efficiency
 
-### 2.x Documentation
+### 2.4 Documentation
+To improve the ease of use of the functions produced in this project, function documentation was used to provide useful information about each function. A package titled 'musicsim' was created, and the documentation can be accessed when the package is loaded. The function documentation files can be found in the __*['man](https://github.com/ST541-Fall2018/andrealanz-project-musicsim/tree/master/man)*__ directory.
 
 ## 3 Conclusions
 

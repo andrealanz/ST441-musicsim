@@ -5,12 +5,13 @@
     \key c \major
     \clef treble
     g,,4
-    f''4
-    b'''4
-    bes'4
-    a'''4
-    f'''2
-    bes''''4
+    gis'''4
+    bes'''4
+    g'''4
+    fis''''4
+    gis''''4
+    a''4
+    fis''4
    \bar "|."
   }
   \paper{

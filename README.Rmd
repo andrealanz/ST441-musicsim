@@ -30,7 +30,7 @@ The project report can be found at the following link:
  
  2. To understand my process behind implementing Markov chains and consonance into music, I would recommend looking at the  __[Implement_Markov.md](https://github.com/ST541-Fall2018/andrealanz-project-musicsim/blob/master/doc/Implement_Markov.md)__ and __[Implement_Consonance.md](https://github.com/ST541-Fall2018/andrealanz-project-musicsim/blob/master/doc/Implement_Consonance.md)__ files in the 'doc' directory.
  
- 3. To begin simulating your own music, I would recommend first looking at the __[Function_Examples.md](https://github.com/ST541-Fall2018/andrealanz-project-musicsim/blob/master/doc/Function_Examples.md)__, then visiting the __['R' directory](https://github.com/ST541-Fall2018/andrealanz-project-musicsim/tree/master/R)__ to use the functions that were used in the project. Note that there are four functions, one which writes a Wave sample to .ly, one that samples notes randomly with no rhythm, one that samples notes randomly with rhythm, and one that samples notes using rhythm and Markov chains. More information about each function can be found in its __[documentation](https://github.com/ST541-Fall2018/andrealanz-project-musicsim/tree/master/man)__.
+ 3. To begin simulating your own music, I would recommend first looking at the __[Function_Examples.md](https://github.com/ST541-Fall2018/andrealanz-project-musicsim/blob/master/doc/Function_Examples.md)__, then visiting the __['R'](https://github.com/ST541-Fall2018/andrealanz-project-musicsim/tree/master/R)__ directory to use the functions that were used in the project. Note that there are four functions, one which writes a Wave sample to .ly, one that samples notes randomly with no rhythm, one that samples notes randomly with rhythm, and one that samples notes using rhythm and Markov chains. More information about each function can be found in its __[documentation](https://github.com/ST541-Fall2018/andrealanz-project-musicsim/tree/master/man)__.
  
  4. To listen to the results produced by this project, visit the __['results'](https://github.com/ST541-Fall2018/andrealanz-project-musicsim/tree/master/results)__ directory, but take note of the project dependencies below. 
  
@@ -50,6 +50,8 @@ The following packages are necessary for the project's code and examples to work
  - here
  
  - pastecs 
+ 
+ - tictoc (for timing experiments)
 
 The following program, which is available for Windows, macOS, and Linux, is required to convert the LilyPond(.ly) files produced by the 'generate_lilypond()' function and can be downloaded at the link below:
 

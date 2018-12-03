@@ -14,6 +14,7 @@ library(purrr)
 library(combinat)
 library(here)
 library(tuneR)
+library(pastecs)
 ```
 
 The purpose of this document is to provide examples for generating music using the functions I have created.

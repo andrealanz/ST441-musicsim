@@ -44,7 +44,7 @@ table(steps)
 ```
 ## steps
 ##  1  2  3 
-## 36 32 32
+## 34 38 28
 ```
 
 Read in the notes frequencies for testing:
@@ -70,7 +70,7 @@ samp #print the sample generated
 ```
 
 ```
-## [1] 466.16 466.16 466.16 466.16 440.00
+## [1] 466.16 440.00 415.30 440.00 440.00
 ```
 
 Note that this sample could now be used to generate a .ly file to listen to the notes.
@@ -96,7 +96,7 @@ for (t in 1:(m-1)){
 generate_lilypond(map(notes[samp1], ~ (sine(.))), bars = 2, file_name = here("results", "implement_markov_ex1")) #generate a .ly file for the sampled notes
 ```
 
-![](Implement_Markov_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
+![](Implement_Markov_files/figure-html/implement_markov_plot1-1.png)<!-- -->
 
 It appears that the higher notes are selected more often, providing evidence that our Markov chain implementation is indeed working. This example song can be found in the 'results' directory called 'implement_markov_ex1'.
 

@@ -6,6 +6,8 @@
 #' @param bars number of bars 
 #' @param file_name name of the file to export
 #' 
+#' @return a file that can be executed by the LilyPond program
+#' 
 #' @examples
 #' sample <- c(sine(440), sine(220))
 #' generate_ly(sample, 1)

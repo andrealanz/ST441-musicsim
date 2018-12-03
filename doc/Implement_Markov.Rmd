@@ -69,7 +69,7 @@ P <- P/rowSums(P)
 ```
 
 Use this matrix to sample from all of the possible 88 notes:
-```{r}
+```{r, implement_markov_plot1}
 m <- 8 #assign the number of notes to generate
 samp1 <- numeric(m)
 samp1[1] <- 1 #assign the first step to 1
