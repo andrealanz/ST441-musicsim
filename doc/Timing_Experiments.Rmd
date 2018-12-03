@@ -13,7 +13,7 @@ library(tictoc)
 library(here)
 ```
 
-The purpose of this document is the two show the increase in the efficiency of the code found in this project though the use of vectorization and implentation in C++.
+The purpose of this document is the two show the increase in the efficiency of the code found in this project through the use of vectorization and implementation in C++.
 
 ### Example 1
 

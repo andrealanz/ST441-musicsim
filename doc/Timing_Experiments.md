@@ -9,7 +9,7 @@ output:
 
 
 
-The purpose of this document is the two show the increase in the efficiency of the code found in this project though the use of vectorization and implentation in C++.
+The purpose of this document is the two show the increase in the efficiency of the code found in this project through the use of vectorization and implementation in C++.
 
 ### Example 1
 
@@ -75,7 +75,7 @@ toc()
 ```
 
 ```
-## 0.027 sec elapsed
+## 0.024 sec elapsed
 ```
 
 More efficient version:
@@ -114,7 +114,7 @@ toc()
 ```
 
 ```
-## 0.041 sec elapsed
+## 0.037 sec elapsed
 ```
  The second version is slightly faster, so I will replace the code with faster version in the original document.
  
@@ -150,7 +150,7 @@ toc()
 ```
 
 ```
-## 0.057 sec elapsed
+## 0.05 sec elapsed
 ```
 
 C++ implementation:

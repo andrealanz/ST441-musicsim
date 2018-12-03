@@ -313,7 +313,7 @@ $(document).ready(function () {
 </div>
 
 
-<p>The purpose of this document is the two show the increase in the efficiency of the code found in this project though the use of vectorization and implentation in C++.</p>
+<p>The purpose of this document is the two show the increase in the efficiency of the code found in this project through the use of vectorization and implementation in C++.</p>
 <div id="example-1" class="section level3">
 <h3>Example 1</h3>
 <p>The first example of efficiency increase includes reworking code from <a href="https://github.com/ST541-Fall2018/andrealanz-project-musicsim/blob/master/doc/Implement_Consonance.Rmd">Implement_Consonance.Rmd</a>.</p>
@@ -362,7 +362,7 @@ octaves</code></pre>
 ## [[7]]
 ## [1] 76 78 80 81 83 85</code></pre>
 <pre class="r"><code>toc()</code></pre>
-<pre><code>## 0.027 sec elapsed</code></pre>
+<pre><code>## 0.024 sec elapsed</code></pre>
 <p>More efficient version:</p>
 <pre class="r"><code>tic()
 octaves &lt;- split(sorted_C_major[2:43], ceiling(seq_along(sorted_C_major[2:43])/6))
@@ -388,7 +388,7 @@ octaves</code></pre>
 ## $`7`
 ## [1] 76 78 80 81 83 85</code></pre>
 <pre class="r"><code>toc()</code></pre>
-<pre><code>## 0.041 sec elapsed</code></pre>
+<pre><code>## 0.037 sec elapsed</code></pre>
 <p>The second version is slightly faster, so I will replace the code with faster version in the original document.</p>
 </div>
 <div id="example-2" class="section level3">
@@ -411,7 +411,7 @@ for (i in 1:7){
 sum(P2)</code></pre>
 <pre><code>## [1] 42</code></pre>
 <pre class="r"><code>toc()</code></pre>
-<pre><code>## 0.057 sec elapsed</code></pre>
+<pre><code>## 0.05 sec elapsed</code></pre>
 <p>C++ implementation:</p>
 <pre class="cpp"><code>#include &lt;algorithm&gt;
 #include &lt;Rcpp.h&gt;
