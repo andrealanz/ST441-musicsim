@@ -14,6 +14,7 @@ library(purrr)
 library(combinat)
 library(here)
 library(tuneR)
+library(pastecs)
 ```
 
 This file includes my process for implementing Markov Chains. Note that this code is influenced by an example in a textbook:
@@ -41,7 +42,7 @@ table(steps)
 
 Read in the notes frequencies for testing:
 ```{r}
-notes <- (read.csv("data/note_freq.csv"))$Frequency..Hz.
+notes <- (read.csv(here("data", "note_freq.csv")))$Frequency..Hz.
 three_notes <- notes[48:50] #load in three notes
 ```
 

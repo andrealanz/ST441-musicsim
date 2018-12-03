@@ -44,13 +44,13 @@ table(steps)
 ```
 ## steps
 ##  1  2  3 
-## 34 38 28
+## 34 42 24
 ```
 
 Read in the notes frequencies for testing:
 
 ```r
-notes <- (read.csv("data/note_freq.csv"))$Frequency..Hz.
+notes <- (read.csv(here("data", "note_freq.csv")))$Frequency..Hz.
 three_notes <- notes[48:50] #load in three notes
 ```
 
@@ -70,7 +70,7 @@ samp #print the sample generated
 ```
 
 ```
-## [1] 466.16 440.00 415.30 440.00 440.00
+## [1] 466.16 440.00 415.30 415.30 415.30
 ```
 
 Note that this sample could now be used to generate a .ly file to listen to the notes.

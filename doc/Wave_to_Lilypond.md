@@ -1,5 +1,5 @@
 ---
-title: "Wspec"
+title: "Wave to Lilypond"
 author: "Andrea Lanz"
 date: "11/26/2018"
 output:
@@ -77,7 +77,7 @@ melodyplot(WspecObject, notes)
 
 ![](Wave_to_Lilypond_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
 
-Creates a datafram that can be used to produce a Lilypad file:
+Creates a datafram that can be used to produce a Lilypond file:
 
 ```r
 qlily <- quantMerge(notes, 4, 4, 2)
@@ -90,7 +90,7 @@ qlily
 ## 5  -12        1       FALSE FALSE
 ```
 
-Write a Lilypad file using the dataframe created above:
+Write a Lilypond file using the dataframe created above:
 
 ```r
 lilyinput(qlily, file = here("results", "wave_to_lily_ex.ly"))

@@ -1,5 +1,5 @@
 ---
-title: "Function_Examples"
+title: "Function Examples"
 author: "Andrea Lanz"
 date: "12/2/2018"
 output: 
