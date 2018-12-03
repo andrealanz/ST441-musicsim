@@ -40,14 +40,14 @@ The project report can be found at the following link: -
 3.  To begin simulating your own music, I would recommend first looking
     at the
     **[Function\_Examples.md](https://github.com/ST541-Fall2018/andrealanz-project-musicsim/blob/master/doc/Function_Examples.md)**,
-    then visiting the **[‘R’
-    directory](https://github.com/ST541-Fall2018/andrealanz-project-musicsim/tree/master/R)**
-    to use the functions that were used in the project. Note that there
-    are four functions, one which writes a Wave sample to .ly, one that
-    samples notes randomly with no rhythm, one that samples notes
-    randomly with rhythm, and one that samples notes using rhythm and
-    Markov chains. More information about each function can be found in
-    its
+    then visiting the
+    **[‘R’](https://github.com/ST541-Fall2018/andrealanz-project-musicsim/tree/master/R)**
+    directory to use the functions that were used in the project. Note
+    that there are four functions, one which writes a Wave sample to
+    .ly, one that samples notes randomly with no rhythm, one that
+    samples notes randomly with rhythm, and one that samples notes using
+    rhythm and Markov chains. More information about each function can
+    be found in its
     **[documentation](https://github.com/ST541-Fall2018/andrealanz-project-musicsim/tree/master/man)**.
 
 4.  To listen to the results produced by this project, visit the
@@ -80,9 +80,17 @@ to work:
 
   - pastecs
 
+  - tictoc (for timing experiments)
+
 The following program, which is available for Windows, macOS, and Linux,
 is required to convert the LilyPond(.ly) files produced by the
 ‘generate\_lilypond()’ function and can be downloaded at the link
 below:
 
   - **[LilyPond](http://lilypond.org/download.html)**
+
+(Note that generating .pdf and .midi files using LilyPond is more
+complicated for macOS X, since converting the .ly file may require
+manually opening LilyPond. Also, a MIDI player may also need to be
+installed, otherwise the .midi files may be converted into another
+playable format i.e. MP3)

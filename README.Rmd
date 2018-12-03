@@ -57,3 +57,4 @@ The following program, which is available for Windows, macOS, and Linux, is requ
 
   - __[LilyPond](http://lilypond.org/download.html)__ 
  
+ (Note that generating .pdf and .midi files using LilyPond is more complicated for macOS X, since converting the .ly file may require manually opening LilyPond. Also, a MIDI player may also need to be installed, or the .midi files can be converted into another playable format i.e. MP3)
