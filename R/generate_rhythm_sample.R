@@ -10,6 +10,7 @@
 #' @examples
 #' rhythm_sample <- generate_rhythm_sample(5)
 #' generate_lilypond(rhythm_sample, 5)
+#' @export
 generate_rhythm_sample <- function(num_bars){
   #error handle
   if(!is.numeric(num_bars) || num_bars != round(num_bars) || num_bars <= 0){

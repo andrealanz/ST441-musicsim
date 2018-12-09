@@ -15,6 +15,7 @@
 #' P <- matrix(unlist(rerun(88,exp(c(1:44,44:1)))), 88, 88, byrow = TRUE)
 #' P <- P/rowSums(P)
 #' generate_markov_sample(5, P)
+#' @export
 generate_markov_sample <- function(num_bars, P){
   #error handles
   if(!is.numeric(num_bars) || num_bars != round(num_bars) || num_bars <= 0){

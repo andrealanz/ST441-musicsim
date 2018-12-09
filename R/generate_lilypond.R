@@ -14,6 +14,7 @@
 #' @examples
 #' sample <- c(sine(440), sine(220))
 #' generate_ly(sample, 1)
+#' @export
 generate_lilypond <- function(sample, bars, file_name = "my_song.ly", quiet = FALSE) {
   Wobj <- reduce(sample, bind) #create one wave object by concatenating the sample of Wave objects
   WspecObject <- periodogram(Wobj, normalize = TRUE, width = 1024) #create a Wspec objects from the sample

@@ -10,6 +10,7 @@
 #' @examples
 #' simple_sample <- generate_simple_sample(5)
 #' generate_lilypond(simple_sample, 5)
+#' @export
 generate_simple_sample <- function(num_bars){
   
   #error handle
