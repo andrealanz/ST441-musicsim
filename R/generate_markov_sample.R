@@ -21,7 +21,7 @@ generate_markov_sample <- function(num_bars, P){
   if(!is.numeric(num_bars) || num_bars != round(num_bars) || num_bars <= 0){
     stop("Input is not a positive integer")
   }
-  notes <- (read.csv(here("data", "note_freq.csv")))$Frequency..Hz. #read in notes data
+  notes <- note_freq #read in notes data
   #create a list of all possible measures
   bars <- c( 2, 
              list(c(1,1)), 
